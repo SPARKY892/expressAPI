@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
 });
 
 //function() used instead of () => to preserve this context
-userSchema.pre('save', function() {
+userSchema.pre('save', function(next) {
     const user = this;
     if(!user.isModified('password')) {
         return next();
